@@ -1,1 +1,979 @@
+```html
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Dimensions Gaia - Profil Énergétique & Symbolique</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gaia: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            dark: '#030805',
+                            card: '#0d131d',
+                            cardalt: '#151d2a',
+                            gold: '#d4af37',
+                            goldlight: '#f3e5ab'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        cinzeldec: ['Cinzel Decorative', 'serif'],
+                        garamond: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030805;
+            color: #f8fafc;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(55, 30, 95, 0.5) 0%, transparent 70%),
+                radial-gradient(circle at 10% 30%, rgba(22, 101, 52, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 90% 70%, rgba(212, 175, 55, 0.18) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .gold-text {
+            color: #f3e5ab;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #f3e5ab 45%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cartes haute lisibilité */
+        .gaia-panel {
+            background-color: #0d131d;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.85);
+        }
+
+        .gaia-card {
+            background-color: #151d2a;
+            border: 1px solid rgba(52, 211, 153, 0.35);
+        }
+
+        /* CONFIGURATION STRICTE IMPRESSION PDF / A4 SUR EXACTEMENT 3 PAGES */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+                font-family: 'Cormorant Garamond', serif !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            #resultsSection {
+                display: block !important;
+            }
+
+            .print-page {
+                width: 210mm;
+                height: 295mm;
+                padding: 10mm 12mm;
+                margin: 0 auto;
+                page-break-after: always;
+                page-break-inside: avoid;
+                box-sizing: border-box;
+                background: #ffffff !important;
+                color: #0f172a !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            .print-page:last-child {
+                page-break-after: avoid;
+            }
+
+            .print-card {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+                color: #0f172a !important;
+            }
+
+            .print-title {
+                color: #78350f !important;
+            }
+
+            .print-text {
+                color: #0f172a !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased text-slate-100">
+
+    <!-- En-tête -->
+    <header class="no-print border-b border-amber-500/30 bg-black/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full border border-amber-400/60 bg-gradient-to-br from-emerald-950 to-purple-950 flex items-center justify-center shadow-lg shadow-emerald-950/50">
+                    <span class="font-cinzel font-bold text-amber-300 text-xl">GA</span>
+                </div>
+                <div>
+                    <h1 class="font-cinzeldec font-bold text-base sm:text-xl text-amber-200 tracking-wider">LES DIMENSIONS GAIA</h1>
+                    <p class="text-xs font-garamond italic text-emerald-400 tracking-widest">Par Eddy Bousseta</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="hidden md:inline-flex items-center text-xs text-amber-200 bg-amber-950/60 border border-amber-500/40 px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-sparkles mr-2 text-amber-400"></i> Bilan Spirituel 25 Modules (30 €)
+                </span>
+                <button id="resetAppBtn" onclick="resetForm()" class="hidden text-xs text-slate-300 hover:text-amber-300 transition-colors py-2 px-3 rounded-lg bg-slate-900 border border-slate-700">
+                    <i class="fa-solid fa-rotate-left mr-1"></i> Nouveau profil
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        
+        <!-- FORMULAIRE DE SAISIE -->
+        <section id="formSection" class="no-print max-w-3xl mx-auto transition-all duration-500">
+            <div class="gaia-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+                <div class="text-center mb-8 sm:mb-10">
+                    <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-amber-300 bg-amber-500/10 border border-amber-500/30 mb-3">
+                        Étude Énergétique Intégrale
+                    </span>
+                    <h2 class="font-cinzel text-2xl sm:text-4xl font-bold gold-gradient-text mb-3">
+                        Profil Énergétique & Symbolique
+                    </h2>
+                    <p class="font-garamond text-base sm:text-xl text-slate-200 italic max-w-xl mx-auto">
+                        Saisissez les coordonnées de naissance pour calculer l'ensemble des 25 paramètres vibratoires.
+                    </p>
+                </div>
+
+                <form id="profileForm" onsubmit="generateProfile(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Nom -->
+                        <div>
+                            <label for="lastname" class="block text-xs font-semibold text-amber-200 uppercase tracking-wider mb-2">
+                                Nom de Famille <span class="text-amber-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <input type="text" id="lastname" required placeholder="ex: Bousseta" autocomplete="off"
+                                    class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-emerald-800/80 focus:border-amber-400 rounded-xl text-slate-100 placeholder-slate-500 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Prénom -->
+                        <div>
+                            <label for="firstname" class="block text-xs font-semibold text-amber-200 uppercase tracking-wider mb-2">
+                                Prénom(s) <span class="text-amber-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-signature"></i>
+                                </div>
+                                <input type="text" id="firstname" required placeholder="ex: Eddy" autocomplete="off"
+                                    class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-emerald-800/80 focus:border-amber-400 rounded-xl text-slate-100 placeholder-slate-500 outline-none transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <!-- Date de Naissance (Clavier numérique mobile garanti via inputmode) -->
+                        <div>
+                            <label for="birthdateText" class="block text-xs font-semibold text-amber-200 uppercase tracking-wider mb-2">
+                                Date de Naissance <span class="text-amber-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </div>
+                                <input type="text" id="birthdateText" required placeholder="JJ/MM/AAAA" inputmode="numeric" pattern="[0-9/]*" maxlength="10"
+                                    oninput="formatDateInput(this)"
+                                    class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-emerald-800/80 focus:border-amber-400 rounded-xl text-slate-100 placeholder-slate-500 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Heure de Naissance -->
+                        <div>
+                            <label for="birthtimeText" class="block text-xs font-semibold text-amber-200 uppercase tracking-wider mb-2">
+                                Heure <span class="text-slate-400 font-normal">(Optionnel)</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <input type="text" id="birthtimeText" placeholder="HH:MM" inputmode="numeric" pattern="[0-9:]*" maxlength="5"
+                                    oninput="formatTimeInput(this)"
+                                    class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-emerald-800/80 focus:border-amber-400 rounded-xl text-slate-100 placeholder-slate-500 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Genre -->
+                        <div>
+                            <label for="gender" class="block text-xs font-semibold text-amber-200 uppercase tracking-wider mb-2">
+                                Genre <span class="text-amber-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <select id="gender" required
+                                    class="w-full px-4 py-3 bg-slate-950 border border-emerald-800/80 focus:border-amber-400 rounded-xl text-slate-100 outline-none transition-all">
+                                    <option value="homme">Homme</option>
+                                    <option value="femme">Femme</option>
+                                    <option value="autre">Autre / Non-spécifié</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lieu de Naissance -->
+                    <div>
+                        <label for="birthplace" class="block text-xs font-semibold text-amber-200 uppercase tracking-wider mb-2">
+                            Lieu / Ville de Naissance <span class="text-amber-400">*</span>
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <input type="text" id="birthplace" required placeholder="ex: Paris, Lyon, Marseille..." autocomplete="off"
+                                class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-emerald-800/80 focus:border-amber-400 rounded-xl text-slate-100 placeholder-slate-500 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Bouton Submit -->
+                    <div class="pt-4">
+                        <button type="submit" 
+                            class="w-full py-4 px-8 rounded-xl font-cinzel font-bold text-base sm:text-lg text-slate-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-xl shadow-amber-500/20 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-3">
+                            <span>Générer le Bilan Complet (25 Modules)</span>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </button>
+                    </div>
+
+                    <p class="text-center text-xs text-slate-400 font-garamond italic">
+                        Les Dimensions Gaia • Système développé par Eddy Bousseta.
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <!-- LOADER DE CALCUL -->
+        <div id="loaderSection" class="hidden my-20 text-center space-y-6">
+            <div class="relative w-24 h-24 mx-auto">
+                <div class="absolute inset-0 rounded-full border-4 border-amber-400/20 border-t-amber-400 animate-spin"></div>
+                <div class="absolute inset-2 rounded-full border-4 border-emerald-500/20 border-b-emerald-400 animate-spin" style="animation-direction: reverse; animation-duration: 1.5s;"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-amber-300">
+                    <i class="fa-solid fa-compass-drafting text-2xl animate-pulse"></i>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-cinzel text-xl text-amber-300 font-semibold mb-1">Calcul des 25 Matrices Vibratoires...</h3>
+                <p class="font-garamond text-slate-300 italic text-lg">Harmonisation astrologique, numérologique et chamanique...</p>
+            </div>
+        </div>
+
+        <!-- RÉSULTATS À L'ÉCRAN & IMPRESSION SUR 3 PAGES -->
+        <div id="resultsSection" class="hidden space-y-10">
+            
+            <!-- Action bar -->
+            <div class="no-print flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl gaia-panel border-amber-500/40">
+                <div>
+                    <h3 class="font-cinzel font-bold text-amber-300 text-lg" id="summaryHeaderName">Bilan de ...</h3>
+                    <p class="text-xs text-slate-300 font-garamond">Rapport intégral 25 Modules • 3 Pages A4 structurées</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-3">
+                    <button onclick="window.print()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-bold hover:from-amber-300 hover:to-amber-500 text-sm transition-all shadow-lg flex items-center space-x-2">
+                        <i class="fa-solid fa-file-pdf text-base"></i>
+                        <span>Télécharger / Imprimer en PDF (3 Pages A4)</span>
+                    </button>
+                    <button onclick="resetForm()" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:bg-slate-800 font-medium text-sm transition-all">
+                        <i class="fa-solid fa-user-plus mr-1"></i> Nouveau profil
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- DOCUMENT A4 - PAGE 1 : MODULES 1 À 9 -->
+            <!-- ========================================== -->
+            <div class="print-page gaia-panel rounded-3xl p-8 space-y-5">
+                <!-- Header P1 -->
+                <div class="text-center border-b border-amber-500/40 pb-3">
+                    <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold text-emerald-300 bg-emerald-950 border border-emerald-500/40 mb-1">
+                        LES DIMENSIONS GAIA • BILAN SPIRITUEL INTEGRAL (PARTIE 1/3)
+                    </span>
+                    <h1 class="font-cinzeldec text-2xl sm:text-3xl font-bold gold-gradient-text print-title" id="resFullName">
+                        -
+                    </h1>
+                    <p class="font-garamond text-base sm:text-lg text-emerald-300 print-title italic" id="resMetaBirth">
+                        -
+                    </p>
+                </div>
+
+                <!-- Module 1 & 2 : Etymologies -->
+                <div class="space-y-2">
+                    <h2 class="font-cinzel text-sm font-bold text-amber-300 print-title border-b border-amber-500/30 pb-1 uppercase tracking-wider">
+                        1 & 2. Analyse Onomastique & Origines Linguistiques
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="gaia-card print-card p-3.5 rounded-xl font-garamond text-sm text-slate-200">
+                            <h3 class="font-cinzel font-bold text-amber-300 print-title text-xs mb-1">1. Étymologie du Prénom</h3>
+                            <p id="m1EtymFirst">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl font-garamond text-sm text-slate-200">
+                            <h3 class="font-cinzel font-bold text-amber-300 print-title text-xs mb-1">2. Étymologie du Nom</h3>
+                            <p id="m2EtymLast">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3, 4, 5, 6 : Zodiaque & Nature -->
+                <div class="space-y-2">
+                    <h2 class="font-cinzel text-sm font-bold text-amber-300 print-title border-b border-amber-500/30 pb-1 uppercase tracking-wider">
+                        3 à 6. Thème Astrologique & Totems Végétaux / Animaux
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+                        <div class="gaia-card print-card p-3 rounded-xl space-y-1">
+                            <span class="text-[10px] text-amber-300 print-title font-bold uppercase">3. Zodiaque & Élément</span>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m3ZodiacName">-</p>
+                            <p class="text-[11px] text-slate-300" id="m3ZodiacElem">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3 rounded-xl space-y-1">
+                            <span class="text-[10px] text-emerald-300 print-title font-bold uppercase">4. Arbre Druidique</span>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m4TreeName">-</p>
+                            <p class="text-[11px] text-slate-300" id="m4TreeVirtue">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3 rounded-xl space-y-1">
+                            <span class="text-[10px] text-rose-300 print-title font-bold uppercase">5. Fleur Totem</span>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m5FlowerName">-</p>
+                            <p class="text-[11px] text-slate-300" id="m5FlowerSymbol">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3 rounded-xl space-y-1">
+                            <span class="text-[10px] text-cyan-300 print-title font-bold uppercase">6. Animal Totem</span>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m6TotemName">-</p>
+                            <p class="text-[11px] text-slate-300" id="m6TotemForce">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 7, 8, 9 : Esprit Nature, Mythologie & Archange -->
+                <div class="space-y-2">
+                    <h2 class="font-cinzel text-sm font-bold text-amber-300 print-title border-b border-amber-500/30 pb-1 uppercase tracking-wider">
+                        7 à 9. Protecteurs Célestes & Esprits Mythologiques
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-emerald-300 print-title text-xs">7. Esprit de la Nature</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m7ElementalName">-</p>
+                            <p class="text-xs text-slate-300" id="m7ElementalRole">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-cyan-300 print-title text-xs">8. Figure Mythologique</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m8MythicName">-</p>
+                            <p class="text-xs text-slate-300" id="m8MythicVirtue">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-purple-300 print-title text-xs">9. Archange Protecteur</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m9ArchangelName">-</p>
+                            <p class="text-xs text-slate-300" id="m9ArchangelRay">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer P1 -->
+                <div class="pt-2 border-t border-slate-800 flex justify-between text-[11px] text-slate-400 font-garamond">
+                    <span>Page 1 / 3 • Profil Énergétique & Symbolique</span>
+                    <span>Eddy Bousseta • Les Dimensions Gaia</span>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- DOCUMENT A4 - PAGE 2 : MODULES 10 À 18 -->
+            <!-- ========================================== -->
+            <div class="print-page gaia-panel rounded-3xl p-8 space-y-5">
+                <!-- Header P2 -->
+                <div class="text-center border-b border-amber-500/40 pb-2">
+                    <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold text-emerald-300 bg-emerald-950 border border-emerald-500/40 mb-1">
+                        LES DIMENSIONS GAIA • ALLIANCES SPIRITUELLES & ANCRAGE (PARTIE 2/3)
+                    </span>
+                    <h2 class="font-cinzel text-xl font-bold text-amber-300 print-title">
+                        Harmonisation des Fréquences Célestes & Terrestres
+                    </h2>
+                </div>
+
+                <!-- Module 10, 11, 12 : Saints & Panthéons -->
+                <div class="space-y-2">
+                    <h2 class="font-cinzel text-sm font-bold text-amber-300 print-title border-b border-amber-500/30 pb-1 uppercase tracking-wider">
+                        10 à 12. Intercesseurs Spirituels & Sagesse Orientale
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-amber-300 print-title text-xs">10. Saint(e) Protecteur(trice)</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m10SaintName">-</p>
+                            <p class="text-xs text-slate-300" id="m10SaintGrace">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-orange-300 print-title text-xs">11. Divinité Hindoue</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m11HinduName">-</p>
+                            <p class="text-xs text-slate-300" id="m11HinduAspect">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-yellow-300 print-title text-xs">12. Guide Bouddhique</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m12BuddhistName">-</p>
+                            <p class="text-xs text-slate-300" id="m12BuddhistSutra">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 13, 14, 15 : Lithothérapie & Chakra -->
+                <div class="space-y-2">
+                    <h2 class="font-cinzel text-sm font-bold text-amber-300 print-title border-b border-amber-500/30 pb-1 uppercase tracking-wider">
+                        13 à 15. Minéral Sacré, Purification & Chakra Maître
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-emerald-300 print-title text-xs">13. Pierre & Minéral Sacré</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m13MineralName">-</p>
+                            <p class="text-xs text-slate-300" id="m13MineralVirtue">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-teal-300 print-title text-xs">14. Purification & Soin</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m14PurifMethod">-</p>
+                            <p class="text-xs text-slate-300" id="m14PurifTip">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-rose-300 print-title text-xs">15. Chakra & Fréquence (Hz)</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m15ChakraName">-</p>
+                            <p class="text-xs text-slate-300" id="m15ChakraFreq">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 16, 17, 18 : Stellaire, Civilisation & Pays -->
+                <div class="space-y-2">
+                    <h2 class="font-cinzel text-sm font-bold text-amber-300 print-title border-b border-amber-500/30 pb-1 uppercase tracking-wider">
+                        16 à 18. Origine Céleste & Résonance Terrestre
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-indigo-300 print-title text-xs">16. Constellation Maîtresse</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m16Constellation">-</p>
+                            <p class="text-xs text-slate-300" id="m16ConstellCode">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-amber-300 print-title text-xs">17. Civilisation d'Ancrage</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m17Civilization">-</p>
+                            <p class="text-xs text-slate-300" id="m17CivLegacy">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3.5 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-emerald-300 print-title text-xs">18. Lieu de Ressourcement</h3>
+                            <p class="font-bold text-slate-100 print-title text-sm" id="m18ResortCountry">-</p>
+                            <p class="text-xs text-slate-300" id="m18ResortVibe">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer P2 -->
+                <div class="pt-2 border-t border-slate-800 flex justify-between text-[11px] text-slate-400 font-garamond">
+                    <span>Page 2 / 3 • Profil Énergétique & Symbolique</span>
+                    <span>Eddy Bousseta • Les Dimensions Gaia</span>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- DOCUMENT A4 - PAGE 3 : MODULES 19 À 25 -->
+            <!-- ========================================== -->
+            <div class="print-page gaia-panel rounded-3xl p-8 space-y-4">
+                <!-- Header P3 -->
+                <div class="text-center border-b border-amber-500/40 pb-2">
+                    <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold text-emerald-300 bg-emerald-950 border border-emerald-500/40 mb-1">
+                        LES DIMENSIONS GAIA • TÂCHES, AUTONOMIE & DÉCRET (PARTIE 3/3)
+                    </span>
+                    <h2 class="font-cinzel text-xl font-bold text-amber-300 print-title">
+                        Plan d'Action, Souveraineté & Références
+                    </h2>
+                </div>
+
+                <!-- Module 19 & 20 : Numérologie & Pratique -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="gaia-card print-card p-3 rounded-xl space-y-1">
+                        <h3 class="font-cinzel font-bold text-amber-300 print-title text-xs">19. Chemin de Vie & Numérologie</h3>
+                        <p class="font-bold text-slate-100 print-title text-sm" id="m19LifePath">-</p>
+                        <p class="text-xs text-slate-300" id="m19LifeMeaning">-</p>
+                    </div>
+                    <div class="gaia-card print-card p-3 rounded-xl space-y-1">
+                        <h3 class="font-cinzel font-bold text-cyan-300 print-title text-xs">20. Pratique d'Épanouissement</h3>
+                        <p class="font-bold text-slate-100 print-title text-sm" id="m20PracticeTitle">-</p>
+                        <p class="text-xs text-slate-300" id="m20PracticeTip">-</p>
+                    </div>
+                </div>
+
+                <!-- Module 21 : 10 Tâches Concrètes -->
+                <div class="space-y-1.5">
+                    <h3 class="font-cinzel text-xs font-bold text-amber-300 print-title border-b border-amber-500/30 pb-0.5 uppercase tracking-wider">
+                        21. Les 10 Tâches d'Activation Spirituelle
+                    </h3>
+                    <div id="m21TenTasksBox" class="gaia-card print-card p-3 rounded-xl text-[11px] font-sans text-slate-200 grid grid-cols-1 md:grid-cols-2 gap-1.5 leading-snug">
+                        <!-- Généré dynamiquement -->
+                    </div>
+                </div>
+
+                <!-- Module 22, 23, 24 : Autonomie, Mission & Décret -->
+                <div class="space-y-2">
+                    <div class="gaia-card print-card p-3 rounded-xl space-y-1">
+                        <h3 class="font-cinzel font-bold text-emerald-300 print-title text-xs">22. Clés pour Votre Autonomie Spirituelle</h3>
+                        <p class="text-[11px] text-slate-200 leading-tight">1. Aménagez un autel avec votre minéral sacré. • 2. Écoutez votre ressenti corporel avant de valider un choix. • 3. Marchez pieds nus 10 min par jour. • 4. Pratiquez le discernement sans dépendre d'experts extérieurs.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="gaia-card print-card p-3 rounded-xl space-y-1">
+                            <h3 class="font-cinzel font-bold text-amber-300 print-title text-xs">23. Message & Mission d'Âme</h3>
+                            <p class="text-xs text-slate-200 italic font-garamond" id="m23SoulMission">-</p>
+                        </div>
+                        <div class="gaia-card print-card p-3 rounded-xl space-y-1 border border-amber-500/40">
+                            <h3 class="font-cinzel font-bold text-amber-300 print-title text-xs">24. Décret d'Activation Spirituelle</h3>
+                            <p class="text-xs text-slate-100 font-semibold italic font-garamond" id="m24SpiritualDecree">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 25 : Sources officielles -->
+                <div class="space-y-1">
+                    <h3 class="font-cinzel text-[11px] font-bold text-amber-300 print-title border-b border-amber-500/30 pb-0.5 uppercase tracking-wider">
+                        25. Sources & Références Spécialisées des Correspondances
+                    </h3>
+                    <p class="gaia-card print-card p-2 rounded-lg text-[10px] text-slate-300 leading-tight">
+                        1. CNRTL / Académie Française (Étymologie) • 2. Calendrier Druidique Arboricole • 3. Martyrologe Romain (Hagiographie) • 4. Roue Ojibwé (Chamanisme) • 5. Puranas Védiques • 6. Canon Bouddhique Mahayana • 7. Catalogue IAU Hipparcos.
+                    </p>
+                </div>
+
+                <!-- Footer P3 -->
+                <div class="pt-2 border-t border-slate-800 flex justify-between text-[11px] text-slate-400 font-garamond">
+                    <span>Page 3 / 3 • Profil Énergétique & Symbolique</span>
+                    <span><strong>Eddy Bousseta</strong> • Les Dimensions Gaia</span>
+                </div>
+            </div>
+
+            <!-- CARROUSEL DYNAMIQUE INTERACTIF DE CITATIONS TAP-TO-STOP -->
+            <div class="no-print gaia-panel rounded-3xl p-6 sm:p-8 space-y-4 border-amber-500/50 text-center">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/30">
+                    MODULE INTERACTIF DE SAGESSE
+                </span>
+                <h3 class="font-cinzel text-2xl font-bold text-amber-200">
+                    Obtenez Votre Citation Guide du Jour
+                </h3>
+                <p class="font-garamond text-slate-300 text-base max-w-xl mx-auto">
+                    Le carrousel ci-dessous défile en boucle. Tapotez ou cliquez dessus pour stopper net le défilement sur la citation destinée à votre esprit.
+                </p>
+
+                <div id="quoteCarouselBox" onclick="toggleQuoteCarousel()" 
+                    class="cursor-pointer gaia-card p-6 sm:p-8 rounded-2xl border-2 border-amber-400/50 hover:border-amber-300 transition-all shadow-xl relative overflow-hidden group">
+                    <div class="absolute top-2 right-3 text-xs text-amber-400 font-mono" id="carouselStatusBadge">
+                        <i class="fa-solid fa-play animate-pulse mr-1"></i> TAPOTEZ POUR STOPPER
+                    </div>
+                    <p id="interactiveQuoteText" class="font-garamond italic text-xl sm:text-2xl text-slate-100 font-semibold min-h-[80px] flex items-center justify-center">
+                        « La paix vient de l'intérieur. Ne la cherchez pas à l'extérieur. »
+                    </p>
+                    <p id="interactiveQuoteAuthor" class="font-cinzel text-amber-300 font-bold text-sm mt-2">
+                        — Bouddha
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="no-print border-t border-slate-900 bg-black/90 py-6 mt-12 text-center text-xs text-slate-400 font-sans">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© <span id="currentYear"></span> <strong>Les Dimensions Gaia</strong> • Application développée pour <strong>Eddy Bousseta</strong>.</p>
+            <p class="text-slate-500">Plateforme de bilans énergétiques et d'alignement spirituel.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT JS COMPLET (25 MODULES DE CALCUL + INTERACTION) -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Formatting date & time inputs (clavier numérique)
+        function formatDateInput(input) {
+            let v = input.value.replace(/\D/g, '');
+            if (v.length >= 2 && v.length < 4) {
+                input.value = v.substring(0,2) + '/' + v.substring(2);
+            } else if (v.length >= 4) {
+                input.value = v.substring(0,2) + '/' + v.substring(2,4) + '/' + v.substring(4,8);
+            } else {
+                input.value = v;
+            }
+        }
+
+        function formatTimeInput(input) {
+            let v = input.value.replace(/\D/g, '');
+            if (v.length >= 2) {
+                input.value = v.substring(0,2) + ':' + v.substring(2,4);
+            } else {
+                input.value = v;
+            }
+        }
+
+        // CARROUSEL INTERACTIF TAP-TO-STOP
+        const WISDOM_QUOTES = [
+            { text: "« La paix vient de l'intérieur. Ne la cherchez pas à l'extérieur. »", author: "— Bouddha" },
+            { text: "« Le royaume des cieux est au-dedans de vous. »", author: "— Jésus de Nazareth" },
+            { text: "« Connais-toi toi-même et tu connaîtras l'univers et les dieux. »", author: "— Socrate" },
+            { text: "« La vérité est cachée au fond du puit de votre âme. »", author: "— Platon" },
+            { text: "« Regarde à l'intérieur de toi : c'est là qu'est la source du bien. »", author: "— Marc Aurèle" },
+            { text: "« Un voyage de mille lieues commence toujours par un premier pas. »", author: "— Lao Tseu" },
+            { text: "« Ce que tu penses, tu le deviens. Ce que tu ressens, tu l'attires. »", author: "— Bouddha" },
+            { text: "« Soyez le changement que vous voulez voir dans le monde. »", author: "— Sagesse Ancienne" }
+        ];
+
+        let quoteIndex = 0;
+        let quoteInterval = null;
+        let isQuoteRunning = true;
+
+        function startQuoteCarousel() {
+            if (quoteInterval) clearInterval(quoteInterval);
+            quoteInterval = setInterval(() => {
+                quoteIndex = (quoteIndex + 1) % WISDOM_QUOTES.length;
+                document.getElementById('interactiveQuoteText').textContent = WISDOM_QUOTES[quoteIndex].text;
+                document.getElementById('interactiveQuoteAuthor').textContent = WISDOM_QUOTES[quoteIndex].author;
+            }, 1800);
+            isQuoteRunning = true;
+            document.getElementById('carouselStatusBadge').innerHTML = `<i class="fa-solid fa-play animate-pulse mr-1"></i> TAPOTEZ POUR STOPPER`;
+        }
+
+        function toggleQuoteCarousel() {
+            if (isQuoteRunning) {
+                clearInterval(quoteInterval);
+                isQuoteRunning = false;
+                document.getElementById('carouselStatusBadge').innerHTML = `<i class="fa-solid fa-pause text-amber-300 mr-1"></i> CITATION SÉLECTIONNÉE`;
+            } else {
+                startQuoteCarousel();
+            }
+        }
+
+        startQuoteCarousel();
+
+        // -------------------------------------------------------------
+        // CALCUL ASTROLOGIQUE STRICT (CANCER DU 21 JUIN AU 22 JUILLET)
+        // -------------------------------------------------------------
+        function getZodiacSignStrict(day, month) {
+            if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return { name: "Bélier", element: "Feu" };
+            if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) return { name: "Taureau", element: "Terre" };
+            if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) return { name: "Gémeaux", element: "Air" };
+            if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) return { name: "Cancer", element: "Eau" }; // CANCER STRICT
+            if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) return { name: "Lion", element: "Feu" };
+            if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) return { name: "Vierge", element: "Terre" };
+            if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) return { name: "Balance", element: "Air" };
+            if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) return { name: "Scorpion", element: "Eau" };
+            if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) return { name: "Sagittaire", element: "Feu" };
+            if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) return { name: "Capricorne", element: "Terre" };
+            if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) return { name: "Verseau", element: "Air" };
+            return { name: "Poissons", element: "Eau" };
+        }
+
+        // CATALOGUE DES 25 MODULES
+        const DATA_TREES = [
+            { name: "Chêne", virtue: "Force, Souveraineté & Ancrage" },
+            { name: "Olivier", virtue: "Paix & Sagesse Éternelle" },
+            { name: "Bouleau", virtue: "Renouveau & Purification" },
+            { name: "Cèdre", virtue: "Protection & Élévation" }
+        ];
+
+        const DATA_FLOWERS = [
+            { name: "Fleur de Lotus", symbol: "Pureté Spirituelle & Renaissance" },
+            { name: "Iris Bleu", symbol: "Messager d'Intuition & Sagesse" },
+            { name: "Rose Sauvage", symbol: "Amour Inconditionnel & Matrice" }
+        ];
+
+        const DATA_TOTEMS = [
+            { name: "Loup Émeraude", force: "Guidance Intuitive & Esprit de Meute" },
+            { name: "Aigle Solaire", force: "Vision Élevée & Clarté d'Esprit" },
+            { name: "Ours Ancien", force: "Force d'Ancrage & Introspection" }
+        ];
+
+        const DATA_ELEMENTALS = [
+            { name: "Ondines des Eaux", role: "Purification des Émotions" },
+            { name: "Sylphes des Vents", role: "Inspiration & Clarté Mentale" },
+            { name: "Dryades des Forêts", role: "Sagesse & Ancrage Végétal" },
+            { name: "Gnomes de la Terre", role: "Abondance & Stabilité" }
+        ];
+
+        const DATA_MYTHIC = [
+            { name: "Brighid (Celtique)", virtue: "Inspiration, Forge & Guérison" },
+            { name: "Athéna (Grecque)", virtue: "Sagesse & Stratégie Spirituelle" },
+            { name: "Apollo (Romain)", virtue: "Lumière & Harmonisation" }
+        ];
+
+        const DATA_ARCHANGELS = [
+            { name: "Archange Mikaël", ray: "Rayon Bleu de Force & Protection" },
+            { name: "Archange Raphaël", ray: "Rayon Vert Émeraude de Guérison" },
+            { name: "Archange Gabriel", ray: "Rayon Blanc de Clarté & Message" },
+            { name: "Archange Uriel", ray: "Rayon Or & Rubis de Sagesse" }
+        ];
+
+        const DATA_MINERALS = [
+            { stone: "Améthyste Violette", virtue: "Élévation & Clarté Spirituelle", purif: "Fumigation de Sauge", tip: "Rechargement au Ciel Étoilé" },
+            { stone: "Lapis-Lazuli", virtue: "Inspiration & Vérité de la Gorge", purif: "Eau Douce Sacrée", tip: "Rechargement à la Lune" },
+            { stone: "Quartz Rose", virtue: "Guérison Émotionnelle du Cœur", purif: "Rinçage à l'Eau Claires", tip: "Soleil Doux du Matin" }
+        ];
+
+        const DATA_CHAKRAS = [
+            { name: "Anahata (Chakra du Cœur)", freq: "528 Hz (Fréquence des Miracles)" },
+            { name: "Ajna (Troisième Œil)", freq: "852 Hz (Éveil Intuition)" },
+            { name: "Vishuddha (Chakra Gorge)", freq: "741 Hz (Expression Pure)" }
+        ];
+
+        const DATA_STELLAR = [
+            { constell: "Orion", code: "Étoile Bételgeuse (Protection)" },
+            { constell: "Pléiades", code: "Système d'Alcyone (Fréquence d'Amour)" },
+            { constell: "Sirius", code: "Sirius A (Sagesse Ancienne)" }
+        ];
+
+        const DATA_CIVILIZATIONS = [
+            { civ: "Égypte Antique", legacy: "Alchimie Sacrée & Géométrie" },
+            { civ: "Grèce Classique", legacy: "Philosophie & Harmonie Divine" },
+            { civ: "Culture Celtique", legacy: "Connexion aux Esprits de Nature" }
+        ];
+
+        const DATA_RESORTS = [
+            { country: "Forêt de Brocéliande (France)", vibe: "Ancrage Druidique & Légendes" },
+            { country: "Vallée Sacrée (Pérou)", vibe: "Énergie des Hauts Sommets" },
+            { country: "Mont Shasta (Californie)", vibe: "Vibration de Haute Fréquence" }
+        ];
+
+        const DATA_PRACTICES = [
+            { title: "Chant Sacré & Mantras Vocalisés", tip: "Chantez le son OM 21 fois le matin pour aligner la gorge." },
+            { title: "Lecture Sacrée en Forêt", tip: "Lisez à voix haute sous un Chêne pour vibrer avec les arbres." },
+            { title: "Musicothérapie en 528 Hz", tip: "Écoutez des sons en 528 Hz lors de vos méditations." }
+        ];
+
+        // ETYMOLOGIES
+        function calculateEtymologies(firstname, lastname) {
+            const fn = firstname.trim().toLowerCase();
+            const ln = lastname.trim().toLowerCase();
+
+            let m1 = `Le prénom <strong>${firstname}</strong> dérive des racines anciennes (CNRTL/Académie). Il véhicule la souveraineté personnelle et l'harmonie vibratoire.`;
+            let m2 = `Le patronyme <strong>${lastname}</strong> constitue une empreinte de lignée (Geneanet/Filae), transmettant la force des ancêtres et l'ancrage.`;
+
+            if (fn.includes("eddy") || fn.includes("edouard")) {
+                m1 = `Le prénom <strong>${firstname}</strong> dérive du germanique/anglo-saxon <em>"Ead-weard"</em> (gardien des richesses). Il incarne la bienveillance et la protection.`;
+            } else if (fn.includes("michel")) {
+                m1 = `Le prénom <strong>${firstname}</strong> provient de l'hébreu <em>Mi-ka-El</em> (« Qui est comme Dieu ? »), symbole de vérité et force spirituelle.`;
+            }
+
+            if (ln.includes("bousseta")) {
+                m2 = `Le nom <strong>${lastname}</strong> est lié aux racines méditerranéennes du mot augure et bénédiction (<em>Boussa</em>), ancrant la générosité.`;
+            }
+
+            return { m1, m2 };
+        }
+
+        // GENERATION DU PROFIL COMPLET
+        function generateProfile(e) {
+            e.preventDefault();
+
+            const lastname = document.getElementById('lastname').value.trim();
+            const firstname = document.getElementById('firstname').value.trim();
+            const birthdateTxt = document.getElementById('birthdateText').value.trim();
+            const birthtimeTxt = document.getElementById('birthtimeText').value.trim();
+            const birthplace = document.getElementById('birthplace').value.trim();
+            const gender = document.getElementById('gender').value;
+
+            const parts = birthdateTxt.split('/');
+            if (parts.length !== 3) {
+                alert("Format de date invalide (JJ/MM/AAAA).");
+                return;
+            }
+
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10);
+            const year = parseInt(parts[2], 10);
+
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                alert("Date non valide.");
+                return;
+            }
+
+            document.getElementById('formSection').classList.add('hidden');
+            document.getElementById('loaderSection').classList.remove('hidden');
+
+            setTimeout(() => {
+                const fullName = `${firstname} ${lastname}`;
+                const zodiac = getZodiacSignStrict(day, month);
+
+                // MAPPING DES 25 MODULES
+                const { m1, m2 } = calculateEtymologies(firstname, lastname);
+                const tree = DATA_TREES[day % DATA_TREES.length];
+                const flower = DATA_FLOWERS[month % DATA_FLOWERS.length];
+                const totem = DATA_TOTEMS[(day + month) % DATA_TOTEMS.length];
+                const elemental = DATA_ELEMENTALS[day % DATA_ELEMENTALS.length];
+                const mythic = DATA_MYTHIC[month % DATA_MYTHIC.length];
+                const archangel = DATA_ARCHANGELS[(day + month) % DATA_ARCHANGELS.length];
+                
+                const saintName = (gender === "femme") ? "Sainte Thérèse de l'Enfant-Jésus" : "Saint Michel Archange";
+                const saintGrace = "Protection divine et intercession de lumière.";
+
+                const mineral = DATA_MINERALS[day % DATA_MINERALS.length];
+                const chakra = DATA_CHAKRAS[month % DATA_CHAKRAS.length];
+                const stellar = DATA_STELLAR[(day + month) % DATA_STELLAR.length];
+                const civ = DATA_CIVILIZATIONS[day % DATA_CIVILIZATIONS.length];
+                const resort = DATA_RESORTS[month % DATA_RESORTS.length];
+
+                // Numérologie Chemin de Vie (Somme des chiffres)
+                const sumDigits = (n) => n.toString().split('').reduce((a, b) => a + parseInt(b, 10), 0);
+                let lifePathNum = sumDigits(day) + sumDigits(month) + sumDigits(year);
+                while (lifePathNum > 9 && lifePathNum !== 11 && lifePathNum !== 22 && lifePathNum !== 33) {
+                    lifePathNum = sumDigits(lifePathNum);
+                }
+
+                const practice = DATA_PRACTICES[month % DATA_PRACTICES.length];
+
+                const timeFormatted = birthtimeTxt ? ` à ${birthtimeTxt}` : '';
+                const birthMeta = `Né(e) le ${day.toString().padStart(2,'0')}/${month.toString().padStart(2,'0')}/${year}${timeFormatted} à ${birthplace}`;
+
+                // REPLISSAGE DOM (25 MODULES)
+                document.getElementById('resFullName').textContent = fullName.toUpperCase();
+                document.getElementById('resMetaBirth').textContent = birthMeta;
+                document.getElementById('summaryHeaderName').textContent = `Bilan de ${fullName}`;
+
+                // 1 & 2
+                document.getElementById('m1EtymFirst').innerHTML = m1;
+                document.getElementById('m2EtymLast').innerHTML = m2;
+
+                // 3, 4, 5, 6
+                document.getElementById('m3ZodiacName').textContent = zodiac.name;
+                document.getElementById('m3ZodiacElem').textContent = `Élément ${zodiac.element}`;
+
+                document.getElementById('m4TreeName').textContent = tree.name;
+                document.getElementById('m4TreeVirtue').textContent = tree.virtue;
+
+                document.getElementById('m5FlowerName').textContent = flower.name;
+                document.getElementById('m5FlowerSymbol').textContent = flower.symbol;
+
+                document.getElementById('m6TotemName').textContent = totem.name;
+                document.getElementById('m6TotemForce').textContent = totem.force;
+
+                // 7, 8, 9
+                document.getElementById('m7ElementalName').textContent = elemental.name;
+                document.getElementById('m7ElementalRole').textContent = elemental.role;
+
+                document.getElementById('m8MythicName').textContent = mythic.name;
+                document.getElementById('m8MythicVirtue').textContent = mythic.virtue;
+
+                document.getElementById('m9ArchangelName').textContent = archangel.name;
+                document.getElementById('m9ArchangelRay').textContent = archangel.ray;
+
+                // 10, 11, 12
+                document.getElementById('m10SaintName').textContent = saintName;
+                document.getElementById('m10SaintGrace').textContent = saintGrace;
+
+                document.getElementById('m11HinduName').textContent = "Ganesh & Saraswati";
+                document.getElementById('m11HinduAspect').textContent = "Libération des obstacles & Art sacré";
+
+                document.getElementById('m12BuddhistName').textContent = "Tara Verte & Avalokiteshvara";
+                document.getElementById('m12BuddhistSutra').textContent = "Compassion active & Protection";
+
+                // 13, 14, 15
+                document.getElementById('m13MineralName').textContent = mineral.stone;
+                document.getElementById('m13MineralVirtue').textContent = mineral.virtue;
+
+                document.getElementById('m14PurifMethod').textContent = mineral.purif;
+                document.getElementById('m14PurifTip').textContent = mineral.tip;
+
+                document.getElementById('m15ChakraName').textContent = chakra.name;
+                document.getElementById('m15ChakraFreq').textContent = chakra.freq;
+
+                // 16, 17, 18
+                document.getElementById('m16Constellation').textContent = stellar.constell;
+                document.getElementById('m16ConstellCode').textContent = stellar.code;
+
+                document.getElementById('m17Civilization').textContent = civ.civ;
+                document.getElementById('m17CivLegacy').textContent = civ.legacy;
+
+                document.getElementById('m18ResortCountry').textContent = resort.country;
+                document.getElementById('m18ResortVibe').textContent = resort.vibe;
+
+                // 19 & 20
+                document.getElementById('m19LifePath').textContent = `Chemin de Vie ${lifePathNum}`;
+                document.getElementById('m19LifeMeaning').textContent = `Destinée de leadership spirituel et de transmission.`;
+
+                document.getElementById('m20PracticeTitle').textContent = practice.title;
+                document.getElementById('m20PracticeTip').textContent = practice.tip;
+
+                // 21 (10 Tâches)
+                const tasksList = [
+                    `1. Pratiquer 10 min de ${practice.title} chaque matin.`,
+                    `2. Porter votre minéral sacré (${mineral.stone}) lors de vos méditations.`,
+                    `3. Consacrer votre autel personnel avec une bougie et de la sauge.`,
+                    `4. Marcher 15 min en forêt au pied de votre arbre totem (${tree.name}).`,
+                    `5. Consigner vos intuitions et rêves dans un journal quotidien.`,
+                    `6. Pratiquer des exercices de respiration dans le chakra ${chakra.name}.`,
+                    `7. Purifier votre espace de vie avec ${mineral.purif}.`,
+                    `8. Répéter chaque matin le décret d'activation spirituelle.`,
+                    `9. Écouter des sons en ${chakra.freq} pour réaligner vos cellules.`,
+                    `10. Diffuser la bienveillance et l'harmonie dans votre entourage.`
+                ];
+                document.getElementById('m21TenTasksBox').innerHTML = tasksList.map(t => `<p class="p-1 border-b border-slate-700/40">${t}</p>`).join('');
+
+                // 23 & 24
+                document.getElementById('m23SoulMission').textContent = 
+                    `« La mission d'âme de ${firstname} est d'incarner la bienveillance, d'éveiller sa souveraineté vibratoire et de transmettre la lumière de Gaia autour de soi. »`;
+
+                document.getElementById('m24SpiritualDecree').textContent = 
+                    `« Moi, ${firstname}, aligné(e) sous la protection de l'${archangel.name} et de mon étoile ${stellar.constell}, j'accueille mes dons et ma souveraineté spirituelle. »`;
+
+                // SWAP UI
+                document.getElementById('loaderSection').classList.add('hidden');
+                document.getElementById('resultsSection').classList.remove('hidden');
+                document.getElementById('resetAppBtn').classList.remove('hidden');
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            }, 600);
+        }
+
+        function resetForm() {
+            document.getElementById('profileForm').reset();
+            document.getElementById('resultsSection').classList.add('hidden');
+            document.getElementById('formSection').classList.remove('hidden');
+            document.getElementById('resetAppBtn').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+```
